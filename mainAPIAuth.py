@@ -1,11 +1,17 @@
 from flask import Flask, request, jsonify
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from bs4 import BeautifulSoup
 import requests
 
 app = Flask(__name__)
+app.config['JWT_SECRET_KEY'] = 'secretpassword'
+jwt = JWTManager(app)
 
 @app.route('/consulta_nfce', methods=['POST'])
+@jwt_required()
 def consulta_nfce():
+    current_user = get_jwt_identity()
+
     data = request.get_json()
 
     if 'url' not in data:
