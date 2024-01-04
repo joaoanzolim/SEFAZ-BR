@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 
 app = Flask(__name__)
-app.config['JWT_SECRET_KEY'] = '1vRBunOoLq92KPWNZ3gsS5BHFZ5XjSnR'
+app.config['JWT_SECRET_KEY'] = '29c089a81652ea60d331cc1cc2c21b05c88bbe8c250343f0641a85f6fba0ff23'
 jwt = JWTManager(app)
 
 @app.route('/consulta_nfce', methods=['POST'])
